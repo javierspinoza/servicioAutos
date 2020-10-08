@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lavado</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+</head>
+<body>
+
+    <div id='app'>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 col-xs-12">  
+                    <h3>Datos del cliente</h3>
+                
+                    <label>Nombre</label>
+                    <input type="text"class="col-md-12" class="form control"placeholder="ingrese su nombre" v-model="nombre">
+                    <label>Vehiculo</label>
+                    <input type="text"class="col-md-12" class="form control"placeholder="ingrese datos del vehiculo" v-model="carro">
+                    <label><strong>Tipo cliente</strong></label> <br>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="preferencial" v-model="tipo">
+                        <label class="form-check-label" for="inlineRadio2">Preferencial</label>
+                    </div>                    
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="normal" v-model="tipo">
+                        <label class="form-check-label" for="inlineRadio2">Normal</label>
+                    </div> <br>
+                    <label><strong>Servicio de lavado</strong></label> <br>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="lavar" id="defaultCheck1" v-model="lavado">
+                        <label class="form-check-label" for="defaultCheck1">
+                              Lavado presión
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="brillar" id="defaultCheck1" v-model="brillo">
+                        <label class="form-check-label" for="defaultCheck1">
+                              Encerada
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="polic" id="defaultCheck1" v-model="poli">
+                        <label class="form-check-label" for="defaultCheck1">
+                              Polichada
+                        </label>
+                    </div>                    
+                    <label><strong>Servicio mecanicos</strong></label> <br>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="meca" id="defaultCheck1" v-model="motriz">
+                        <label class="form-check-label" for="defaultCheck1">
+                              Mecánica automotriz
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="aceites" id="defaultCheck1" v-model="aceite">
+                        <label class="form-check-label" for="defaultCheck1">
+                              Cambio aceite
+                        </label>
+                    </div>
+                    <label><strong>Valor repuesto</strong></label> <br>
+                    <input type="text"class="col-md-12" class="form control"placeholder="ingrese su valor" v-model="rpsto">                    
+                    
+                    <input type="button"value="Consultar"class="btn btn-success" v-on:click="procesar">  
+                </div>     
+
+                <div class="col-md-6 col-xs-12">
+                    <h3>Información</h3>  
+                    <table class="table table-bordered table-striped">
+                        <thead>
+                            <tr class="bg-dark text-white">
+                                <td>Nombre</td>
+                                <td>Vehículo</td>
+                                <td>Tipo cliente</td>
+                                <td>Total servicios más desc</td>
+                                <td>Valor repuesto</td>
+                                <td>Total a pagar</td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr v-for="objeto in arrayDatos" v-bind:style="objeto.total>6000000?'color:red':'color:green'">
+                                <td v-text="objeto.nombre"></td>
+                                <td v-text="objeto.carro"></td>
+                                <td v-text="objeto.tipo"></td>
+                                <td v-text="objeto.total"></td>                               
+                                <td v-text="objeto.rpsto"></td>                               
+                                <td v-text="objeto.total1"></td>                               
+                            </tr>
+              
+                        </tbody>
+
+                    </table>      
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+    
+</body>
+
+<script src="js/vue.js"></script> 
+<script src="js/main.js"></script> 
+</html>
